@@ -13,13 +13,10 @@ eureka:
 spring:
   cloud:
     gateway:
-      routes:
-      - id: organization-service
-        uri: lb://organization-service
-        predicates:
-        - Path=/organization/**
-        filters:
-        - RewritePath=/organization/(?<path>.*), /$\{path}
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+        
 management:
   endpoints:
     web:
